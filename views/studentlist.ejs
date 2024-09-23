@@ -1,0 +1,156 @@
+<%- include('./base/header.ejs') %>
+
+
+<style>
+    /* General container styling */
+.container {
+    margin-top: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #ecebe9 0%, #dfe1e8 100%);
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    color: #333;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Heading style */
+h4 {
+    color: #fff;
+    font-size: 24px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Table styling */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Table headers */
+thead {
+    background-color: #11998e;
+    color: white;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: center;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+/* Table body styling */
+tbody tr {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e0f7fa;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+/* Table borders */
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+        width: 100%;
+    }
+
+    thead {
+        display: none;
+    }
+
+    tr {
+        margin-bottom: 10px;
+        padding: 15px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+    }
+
+    td {
+        display: block;
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 45%;
+        padding-left: 15px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #333;
+    }
+}
+
+
+</style>
+
+
+
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+
+<div class="container">
+    <div class="row">
+        <h4 class="text-center bg-success my-4">Students List</h4>
+        <section aria-labelledby="student-table-heading">
+            <table class="table text-center table-striped table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Roll No</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Father's Name</th>
+                        <th scope="col">Aadhar No</th>
+                        <th scope="col">Mobile No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% students.forEach(student => { %>
+                    <tr>
+                        <td><%= student.rollNo || 'N/A' %></td>
+                        <td><%= student.firstName || 'N/A' %></td>
+                        <td><%= student.lastName || 'N/A' %></td>
+                        <td><%= student.fatherName || 'N/A' %></td>
+                        <td><%= student.aadharCard || 'N/A' %></td>
+                        <td><%= student.mobileNo || 'N/A' %></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </section>
+    </div>
+</div>
+
+
+<%- include('./base/footer.ejs') %>
